@@ -1,3 +1,10 @@
+/**
+ * Creates the HTML template for the gallery image.
+ *
+ * @param {number} index - Index of the image.
+ * @returns {string} HTML template for the gallery image.
+ */
+
 function getImages(index) {
     return /*html*/ `
         <img class="image" id="img${index}"
@@ -5,6 +12,13 @@ function getImages(index) {
             onclick="highlightImage(${index})"
             alt="${myImages[index].title}">`;
 }
+
+/**
+ * Creates the HTML template for the image modal.
+ *
+ * @param {number} index - Index of the selected image.
+ * @returns {string} HTML template for the modal.
+ */
 
 function getModalTemplate(index) {
     return /*html*/ `
