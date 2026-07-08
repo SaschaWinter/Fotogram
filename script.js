@@ -24,7 +24,7 @@ const dialogRef = document.getElementById("photo-highlight");
  */
 function renderImages() {
     for (let index = 0; index < myImages.length; index++) {
-        containerRef.innerHTML = getImages(index);
+        containerRef.innerHTML += getImages(index);
     }
 }
 
