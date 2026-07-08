@@ -1,0 +1,247 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #06171e;
+    font-family: "Figtree", sans-serif;
+}
+
+/* Header */
+
+header {
+    padding-inline: calc((100% - 1440px) / 2);
+    background-color: #09212a;
+    width: 100%;
+    min-height: 70px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header-logo {
+    align-self: center;
+    padding-inline: 90px;
+}
+
+/* Main */
+
+main {
+    padding-inline: calc((100% - 1440px) / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    flex-grow: 1;
+    align-content: center;
+}
+
+h1 {
+    margin-top: 5dvh;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 3rem;
+}
+
+#photo-container {
+    width: 80%;
+    height: fit-content;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.image {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border: #124658 solid 2px;
+    border-radius: 15px;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.image:hover {
+    border-color: #6bc1e1;
+    transform: translateY(-5px);
+}
+
+/* Overlay/Dialog */
+
+#photo-highlight.open {
+    width: 60dvh;
+    height: 70dvh;
+    position: fixed;
+    margin: auto;
+    background-color: #09212a;
+    border: solid 1px #124658;
+    border-radius: 40px;
+}
+
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-bottom: 56px;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.highlight-image {
+    max-width: 450px;
+    max-height: 350px;
+    object-fit: cover;
+    border: #124658 solid 2px;
+    border-radius: 15px;
+}
+
+.photo-highlight-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    gap: 10px;
+    width: 100%;
+    color: white;
+}
+
+.photo-highlight-header p {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.photo-highlight-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.photo-highlight-footer p {
+    color: white;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Buttons */
+
+.button-right,
+.button-left {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 100px;
+    background-color: rgba(253, 91, 79, 0.1);
+    transition: background-color 0.2s ease-in-out;
+}
+
+.photo-highlight-footer button:hover .button-right,
+.photo-highlight-footer button:hover .button-left {
+    background-color: rgba(253, 91, 79, 0.2);
+}
+
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+button:focus-visible {
+    outline: 1px solid #1e728e;
+    outline-offset: 4px;
+    background-color: #124658;
+    border-color: #ffffff;
+}
+
+.button-close {
+    border-radius: 100px;
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.button-close:hover {
+    background-color: #124658;
+}
+
+.button-close:active {
+    background-color: #0d3240;
+}
+
+/* Footer */
+
+footer {
+    padding-inline: calc((100% - 1440px) / 2);
+    width: 100%;
+    min-height: 80px;
+    border-radius: 60px 60px 0 0;
+    background-color: #09212a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo {
+    padding-top: 20px;
+    height: 45px;
+}
+
+.footer-p {
+    font-size: 10px;
+    padding-top: 5px;
+    color: #99acb3;
+}
+
+@media screen and (max-width: 565px) {
+    #title {
+        font-size: 3rem;
+    }
+
+    header {
+        justify-content: center;
+    }
+    .header-logo {
+        margin-left: 0px;
+    }
+    .highlight-image {
+        max-width: 380px;
+        max-height: 280px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .highlight-image {
+        max-width: 280px;
+    }
+}

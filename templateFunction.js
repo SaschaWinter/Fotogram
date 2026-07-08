@@ -1,0 +1,30 @@
+function getImages(index) {
+    return /*html*/ `
+        <img class="image" id="img${index}"
+            src="./assets/media/${myImages[index].filename}"
+            onclick="highlightImage(${index})"
+            alt="${myImages[index].title}">`;
+}
+
+function getModalTemplate(index) {
+    return /*html*/ `
+    <div class="dialog-content">
+
+        <header class="photo-highlight-header">
+			<p>${myImages[index].title}</p>
+			<button onclick="closeHighlightImage()" aria-label="Close image"><img class="button-close" src="./assets/icon/close.svg" alt="close button"></button>
+		</header>
+
+        <img class="highlight-image" id="modal-img${index}"
+            src="./assets/media/${myImages[index].filename}"
+            alt="${myImages[index].title}"
+            onclick="highlightImage(${index})">
+
+		<footer class="photo-highlight-footer">
+			<button  onclick="decrementModal(${index})" aria-label="Previous image"><img class="button-left" src="./assets/icon/arrow_left.svg" alt="button left"></button>
+			<p>${index + 1}/${myImages.length}</p>
+			<button  onclick="incrementModal(${index})" aria-label="Next image"><img class="button-right" src="./assets/icon/arrow_right.svg" alt="button right"></button>
+		</footer>
+
+    </div>`;
+}
