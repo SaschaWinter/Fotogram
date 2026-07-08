@@ -26,7 +26,7 @@ function getModalTemplate(index) {
 
         <header class="photo-highlight-header">
 			<p>${myImages[index].title}</p>
-			<button onclick="closeHighlightImage()" aria-label="Close image"><img class="button-close" src="./assets/icon/close.svg" alt="close button"></button>
+			<button onclick="closeHighlightImage()" aria-label="Close image"><img class="button-close" src="./assets/icon/close.svg" alt=""></button>
 		</header>
 
         <img class="highlight-image" id="modal-img${index}"

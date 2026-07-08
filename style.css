@@ -42,14 +42,13 @@ header {
     min-height: 70px;
     color: var(--text-main);
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 }
 
 .header-logo {
     align-self: center;
-    padding-inline: 90px;
+    padding-inline: clamp(1rem, 5vw, 90px);
 }
 
 /* Main */
@@ -61,33 +60,31 @@ main {
     align-items: center;
     height: fit-content;
     flex-grow: 1;
-    align-content: center;
 }
 
 h1 {
-    margin-top: 5dvh;
+    margin-top: clamp(2rem, 5dvh, 5dvh);
     color: var(--text-main);
     text-align: center;
     padding: 15px;
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
 }
 
-#photo-container {
-    width: 80%;
+.gallery-grid {
+    width: clamp(90%, 80vw, 1200px);
     height: fit-content;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
+    margin-block: clamp(2rem, 5vh, 5vh);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
 .image {
-    height: 150px;
-    width: 150px;
+    height: clamp(120px, 12vw, 150px);
+    width: clamp(120px, 12vw, 150px);
     object-fit: cover;
     border: 2px solid var(--line);
     border-radius: 15px;
@@ -102,14 +99,14 @@ h1 {
 
 /* Overlay/Dialog */
 
-#photo-highlight.open {
-    width: 60dvh;
-    height: 70dvh;
+.photo-highlight.open {
+    width: clamp(320px, 60dvw, 700px);
+    height: clamp(500px, 70dvh, 750px);
     position: fixed;
     margin: auto;
     background-color: var(--bg-panel);
     border: 1px solid var(--line);
-    border-radius: 40px;
+    border-radius: clamp(20px, 3vw, 40px);
 }
 
 .dialog-content {
@@ -118,7 +115,7 @@ h1 {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding-bottom: 56px;
+    padding-bottom: clamp(2rem, 5vh, 56px);
 }
 
 dialog::backdrop {
@@ -126,8 +123,8 @@ dialog::backdrop {
 }
 
 .highlight-image {
-    max-width: 450px;
-    max-height: 350px;
+    max-width: clamp(280px, 35vw, 450px);
+    max-height: clamp(220px, 40vh, 350px);
     object-fit: cover;
     border: 2px solid var(--line);
     border-radius: 15px;
@@ -138,7 +135,7 @@ dialog::backdrop {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
+    padding: clamp(1rem, 3vw, 30px);
     gap: 10px;
     width: 100%;
     color: var(--text-main);
@@ -146,7 +143,7 @@ dialog::backdrop {
 
 .photo-highlight-header p {
     font-weight: bold;
-    font-size: 24px;
+    font-size: clamp(1rem, 2vw, 24px);
 }
 
 .photo-highlight-footer {
@@ -154,7 +151,7 @@ dialog::backdrop {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: clamp(0.75rem, 2vw, 20px);
     padding: 15px;
 }
 
@@ -195,7 +192,6 @@ button:focus-visible {
     outline: 1px solid var(--focus-outline);
     outline-offset: 4px;
     background-color: var(--line);
-    border-color: var(--text-main);
 }
 
 .button-close {
@@ -235,30 +231,20 @@ footer {
 }
 
 .footer-p {
-    font-size: 10px;
-    padding-top: 5px;
+    font-size: 0.875rem;
+    padding-top: 16px;
+    padding-bottom: 16px;
     color: var(--text-muted);
 }
 
-@media screen and (max-width: 565px) {
-    #title {
-        font-size: 3rem;
-    }
+/* Mobile */
 
+@media screen and (max-width: 565px) {
     header {
         justify-content: center;
     }
-    .header-logo {
-        margin-left: 0px;
-    }
-    .highlight-image {
-        max-width: 380px;
-        max-height: 280px;
-    }
-}
 
-@media screen and (max-width: 450px) {
-    .highlight-image {
-        max-width: 280px;
+    .header-logo {
+        margin-left: 0;
     }
 }

@@ -81,12 +81,16 @@ function closeHighlightImage() {
     dialogRef.classList.remove("open");
 }
 
-// Close the dialog when clicking on the backdrop.
+/**
+ * Close the dialog when clicking on the backdrop.
+ */
 dialogRef.addEventListener("click", (event) => {
     if (event.target === dialogRef) closeHighlightImage();
 });
 
-// Remove the "open" class when the dialog is closed.
+/**
+ * Remove the "open" class when the dialog is closed.
+ */
 dialogRef.addEventListener("close", () => {
     dialogRef.classList.remove("open");
 });

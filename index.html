@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Fotogram</title>
         <link rel="stylesheet" href="style.css" />
-        <script defer src="templateFunction.js"></script>
+        <script defer src="template-function.js"></script>
         <script defer src="script.js"></script>
         <link
             rel="icon"
@@ -23,8 +23,12 @@
         </header>
         <main>
             <h1>Your personal photo album</h1>
-            <section id="photo-container" aria-label="Photo Gallery"></section>
-            <dialog id="photo-highlight"></dialog>
+            <section
+                id="photo-container"
+                class="gallery-grid"
+                aria-label="Photo Gallery"
+            ></section>
+            <dialog id="photo-highlight" class="photo-highlight"></dialog>
         </main>
         <footer>
             <img
