@@ -19,12 +19,20 @@ const myImages = [
 const containerRef = document.getElementById("photo-container");
 const dialogRef = document.getElementById("photo-highlight");
 
+/**
+ * Renders all gallery images into the photo container
+ */
 function renderImages() {
-    containerRef.innerHTML = "";
     for (let index = 0; index < myImages.length; index++) {
-        containerRef.innerHTML += getImages(index);
+        containerRef.innerHTML = getImages(index);
     }
 }
+
+/**
+ * Opens the selected image in the modal.
+ *
+ * @param {number} index - Index of the selected image
+ */
 
 function highlightImage(index) {
     updateModal(index);
@@ -32,34 +40,53 @@ function highlightImage(index) {
     dialogRef.showModal();
 }
 
+/**
+ * Updates the modal content with the selected image.
+ *
+ * @param {number} index - Index of the current image.
+ */
+
 function updateModal(index) {
     dialogRef.innerHTML = getModalTemplate(index);
 }
 
+/**
+ * Displays the next image in the gallery.
+ *
+ * @param {number} index - Index of the current image.
+ */
+
 function incrementModal(index) {
-    // safetycheck: nach dem letzten Bild wieder zum ersten springen
     if (index === myImages.length - 1) index = -1;
     updateModal(index + 1);
 }
 
+/**
+ * Displays the previous image in the gallery.
+ *
+ * @param {number} index - Index of the current image.
+ */
+
 function decrementModal(index) {
-    // safetycheck: vor dem ersten Bild zum letzten springen
     if (index === 0) index = myImages.length;
     updateModal(index - 1);
 }
+
+/**
+ * Closes the image modal.
+ */
 
 function closeHighlightImage() {
     dialogRef.close();
     dialogRef.classList.remove("open");
 }
 
-// Schließt das Overlay bei Klick auf den Hintergrund (nicht auf den Inhalt)
+// Close the dialog when clicking on the backdrop.
 dialogRef.addEventListener("click", (event) => {
     if (event.target === dialogRef) closeHighlightImage();
 });
 
-// Räumt die .open-Klasse auch auf, wenn der Browser das Dialog nativ
-// über die Esc-Taste schließt
+// Remove the "open" class when the dialog is closed.
 dialogRef.addEventListener("close", () => {
     dialogRef.classList.remove("open");
 });
