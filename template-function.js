@@ -35,9 +35,9 @@ function getModalTemplate(index) {
             onclick="highlightImage(${index})">
 
 		<footer class="photo-highlight-footer">
-			<button  onclick="decrementModal(${index})" aria-label="Previous image"><img class="button-left" src="./assets/icon/arrow_left.svg" alt="button left"></button>
+			<button  onclick="decrementModal(${index})" aria-label="Previous image"><img class="button-left" src="./assets/icon/arrow_left.svg" alt=""></button>
 			<p>${index + 1}/${myImages.length}</p>
-			<button  onclick="incrementModal(${index})" aria-label="Next image"><img class="button-right" src="./assets/icon/arrow_right.svg" alt="button right"></button>
+			<button  onclick="incrementModal(${index})" aria-label="Next image"><img class="button-right" src="./assets/icon/arrow_right.svg" alt=""></button>
 		</footer>
 
     </div>`;
