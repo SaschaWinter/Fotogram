@@ -88,11 +88,4 @@ dialogRef.addEventListener("click", (event) => {
     if (event.target === dialogRef) closeHighlightImage();
 });
 
-/**
- * Remove the "open" class when the dialog is closed.
- */
-dialogRef.addEventListener("close", () => {
-    dialogRef.classList.remove("open");
-});
-
 document.addEventListener("DOMContentLoaded", renderImages);

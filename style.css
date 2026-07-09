@@ -111,7 +111,7 @@ h1 {
 /* Overlay/Dialog */
 
 .photo-highlight.open {
-    width: clamp(320px, 60dvw, 700px);
+    width: clamp(320px, 60vw, 700px);
     height: clamp(500px, 70dvh, 750px);
     position: fixed;
     margin: auto;
