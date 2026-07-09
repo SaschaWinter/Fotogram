@@ -23,8 +23,8 @@ const dialogRef = document.getElementById("photo-highlight");
  * Renders all gallery images into the photo container
  */
 function renderImages() {
-    for (let index = 0; index < myImages.length; index++) {
-        containerRef.innerHTML += getImages(index);
+    for (let i = 0; i < myImages.length; i++) {
+        containerRef.innerHTML += getImages(i);
     }
 }
 
@@ -34,8 +34,8 @@ function renderImages() {
  * @param {number} index - Index of the selected image
  */
 
-function highlightImage(index) {
-    updateModal(index);
+function highlightImage(i) {
+    updateModal(i);
     dialogRef.classList.add("open");
     dialogRef.showModal();
 }
@@ -46,8 +46,8 @@ function highlightImage(index) {
  * @param {number} index - Index of the current image.
  */
 
-function updateModal(index) {
-    dialogRef.innerHTML = getModalTemplate(index);
+function updateModal(i) {
+    dialogRef.innerHTML = getModalTemplate(i);
 }
 
 /**
@@ -56,9 +56,9 @@ function updateModal(index) {
  * @param {number} index - Index of the current image.
  */
 
-function incrementModal(index) {
-    if (index === myImages.length - 1) index = -1;
-    updateModal(index + 1);
+function incrementModal(i) {
+    if (i === myImages.length - 1) i = -1;
+    updateModal(i + 1);
 }
 
 /**
@@ -67,9 +67,9 @@ function incrementModal(index) {
  * @param {number} index - Index of the current image.
  */
 
-function decrementModal(index) {
-    if (index === 0) index = myImages.length;
-    updateModal(index - 1);
+function decrementModal(i) {
+    if (i === 0) i = myImages.length;
+    updateModal(i - 1);
 }
 
 /**
