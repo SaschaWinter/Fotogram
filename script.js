@@ -23,7 +23,7 @@ const dialogRef = document.getElementById("photo-highlight");
 let currentIndex = 0;
 
 /**
- * Renders all gallery images into the photo container.
+ *  Renders all gallery images into the photo container.
  */
 function renderImages() {
     for (let index = 0; index < myImages.length; index++) {
@@ -32,7 +32,7 @@ function renderImages() {
 }
 
 /**
- * Opens the selected image in the modal.
+ *  Opens the selected image in the modal.
  *
  * @param {number} index - Index of the selected image.
  */
@@ -43,8 +43,8 @@ function highlightImage(index) {
 }
 
 /**
- * Updates the modal content with the selected image and restores
- * keyboard focus to the "next" button so Tab navigation isn't lost.
+ *  Updates the modal content with the selected image and restores
+ *  keyboard focus to the "next" button so Tab navigation isn't lost.
  *
  * @param {number} index - Index of the current image.
  */
@@ -55,7 +55,7 @@ function updateModal(index) {
 }
 
 /**
- * Displays the next image in the gallery.
+ *  Displays the next image in the gallery.
  *
  * @param {number} index - Index of the current image.
  */
@@ -65,7 +65,7 @@ function incrementModal(index) {
 }
 
 /**
- * Displays the previous image in the gallery.
+ *  Displays the previous image in the gallery.
  *
  * @param {number} index - Index of the current image.
  */
@@ -75,7 +75,7 @@ function decrementModal(index) {
 }
 
 /**
- * Closes the image modal.
+ *  Closes the image modal.
  */
 function closeHighlightImage() {
     dialogRef.close();
@@ -83,22 +83,22 @@ function closeHighlightImage() {
 }
 
 /**
- * Close the dialog when clicking on the backdrop.
+ *  Close the dialog when clicking on the backdrop.
  */
 dialogRef.addEventListener("click", (event) => {
     if (event.target === dialogRef) closeHighlightImage();
 });
 
 /**
- * Remove the "open" class when the dialog is closed.
+ *  Remove the "open" class when the dialog is closed.
  */
 dialogRef.addEventListener("close", () => {
     dialogRef.classList.remove("open");
 });
 
 /**
- * Navigate between images using the Left/Right arrow keys while
- * the modal is open.
+ *  Navigate between images using the Left/Right arrow keys while
+ *  the modal is open.
  */
 dialogRef.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") incrementModal(currentIndex);
@@ -106,9 +106,9 @@ dialogRef.addEventListener("keydown", (event) => {
 });
 
 /**
- * Determines how many thumbnails fit into a single row by comparing
- * their vertical position. Needed because the grid uses flex-wrap,
- * so the column count changes depending on viewport width.
+ *  Determines how many thumbnails fit into a single row by comparing
+ *  their vertical position. Needed because the grid uses flex-wrap,
+ *  so the column count changes depending on viewport width.
  *
  * @param {HTMLElement[]} thumbnails - All thumbnail buttons in the grid.
  * @returns {number} Number of thumbnails per row.
@@ -125,9 +125,9 @@ function getColumnsPerRow(thumbnails) {
 }
 
 /**
- * Move focus between gallery thumbnails using the arrow keys, so
- * keyboard users can browse the grid without pressing Tab repeatedly.
- * Left/Right move within a row, Up/Down jump a full row.
+ *  Move focus between gallery thumbnails using the arrow keys, so
+ *  keyboard users can browse the grid without pressing Tab repeatedly.
+ *  Left/Right move within a row, Up/Down jump a full row.
  */
 containerRef.addEventListener("keydown", (event) => {
     const arrowKeys = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
@@ -154,8 +154,10 @@ containerRef.addEventListener("keydown", (event) => {
         nextIndex = focusedIndex - columns;
     }
 
-    // Bei Hoch/Runter nicht "umwickeln", sondern am Rand einfach stehen bleiben,
-    // da die letzte Zeile weniger Bilder haben kann als die anderen.
+    /**
+     *  When going up/down, don't "wrap" around the image, but simply stop at the edge,
+     *  because the last row may have fewer images than the others.
+     */
     if (nextIndex < 0 || nextIndex >= thumbnails.length) return;
 
     thumbnails[nextIndex].focus();
