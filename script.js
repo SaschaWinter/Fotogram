@@ -19,6 +19,9 @@ const myImages = [
 const containerRef = document.getElementById("photo-container");
 const dialogRef = document.getElementById("photo-highlight");
 
+/** Index of the image currently shown in the modal. */
+let currentIndex = 0;
+
 /**
  * Renders all gallery images into the photo container.
  */
@@ -46,6 +49,7 @@ function highlightImage(index) {
  * @param {number} index - Index of the current image.
  */
 function updateModal(index) {
+    currentIndex = index;
     dialogRef.innerHTML = getModalTemplate(index);
     dialogRef.querySelector(".button-right")?.focus();
 }
@@ -90,6 +94,73 @@ dialogRef.addEventListener("click", (event) => {
  */
 dialogRef.addEventListener("close", () => {
     dialogRef.classList.remove("open");
+});
+
+/**
+ * Navigate between images using the Left/Right arrow keys while
+ * the modal is open.
+ */
+dialogRef.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") incrementModal(currentIndex);
+    if (event.key === "ArrowLeft") decrementModal(currentIndex);
+});
+
+/**
+ * Determines how many thumbnails fit into a single row by comparing
+ * their vertical position. Needed because the grid uses flex-wrap,
+ * so the column count changes depending on viewport width.
+ *
+ * @param {HTMLElement[]} thumbnails - All thumbnail buttons in the grid.
+ * @returns {number} Number of thumbnails per row.
+ */
+function getColumnsPerRow(thumbnails) {
+    if (thumbnails.length === 0) return 1;
+    const firstRowTop = thumbnails[0].offsetTop;
+    let columns = 0;
+    for (const thumbnail of thumbnails) {
+        if (thumbnail.offsetTop !== firstRowTop) break;
+        columns++;
+    }
+    return columns;
+}
+
+/**
+ * Move focus between gallery thumbnails using the arrow keys, so
+ * keyboard users can browse the grid without pressing Tab repeatedly.
+ * Left/Right move within a row, Up/Down jump a full row.
+ */
+containerRef.addEventListener("keydown", (event) => {
+    const arrowKeys = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown"];
+    if (!arrowKeys.includes(event.key)) return;
+
+    const thumbnails = Array.from(
+        containerRef.querySelectorAll(".thumbnail-btn"),
+    );
+    const focusedIndex = thumbnails.indexOf(document.activeElement);
+    if (focusedIndex === -1) return;
+
+    event.preventDefault();
+
+    const columns = getColumnsPerRow(thumbnails);
+    let nextIndex = focusedIndex;
+
+    if (event.key === "ArrowRight") {
+        nextIndex = (focusedIndex + 1) % thumbnails.length;
+    } else if (event.key === "ArrowLeft") {
+        nextIndex = (focusedIndex - 1 + thumbnails.length) % thumbnails.length;
+    } else if (event.key === "ArrowDown") {
+        nextIndex = focusedIndex + columns;
+    } else if (event.key === "ArrowUp") {
+        nextIndex = focusedIndex - columns;
+    }
+
+    /**
+     *  When moving up or down, do not wrap around; simply stop at the edge,
+     *  since the last row may contain fewer images than the others.
+     */
+    if (nextIndex < 0 || nextIndex >= thumbnails.length) return;
+
+    thumbnails[nextIndex].focus();
 });
 
 document.addEventListener("DOMContentLoaded", renderImages);
