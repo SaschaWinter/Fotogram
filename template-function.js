@@ -7,10 +7,11 @@
 
 function getImages(index) {
     return /*html*/ `
-        <img class="image" id="img${index}"
-            src="./assets/media/${myImages[index].filename}"
-            onclick="highlightImage(${index})"
-            alt="${myImages[index].title}">`;
+        <button class="thumbnail-btn" onclick="highlightImage(${index})" aria-label="Open photo: ${myImages[index].title}">
+            <img class="image" id="img${index}"
+                src="./assets/media/${myImages[index].filename}"
+                alt="${myImages[index].title}">
+        </button>`;
 }
 
 /**

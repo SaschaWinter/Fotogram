@@ -26,11 +26,9 @@
 html,
 body {
     min-height: 100dvh;
-    width: 100%;
-
     display: flex;
     flex-direction: column;
-
+    width: 100%;
     background-color: var(--bg-main);
     font-family: "Figtree", sans-serif;
 }
@@ -38,13 +36,11 @@ body {
 /* Header */
 
 header {
-    width: 100%;
-    min-height: 70px;
-
     padding-inline: calc((100% - 1440px) / 2);
     background-color: var(--bg-panel);
+    width: 100%;
+    min-height: 70px;
     color: var(--text-main);
-
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -58,47 +54,48 @@ header {
 /* Main */
 
 main {
-    height: fit-content;
-
     padding-inline: calc((100% - 1440px) / 2);
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: fit-content;
     flex-grow: 1;
 }
 
 h1 {
-    margin-top: clamp(1.5rem, 5dvh, 4rem);
-    padding: 15px;
-
+    margin-top: clamp(2rem, 5dvh, 5dvh);
     color: var(--text-main);
     text-align: center;
+    padding: 15px;
     font-size: clamp(2.5rem, 5vw, 4rem);
 }
 
 .gallery-grid {
     width: clamp(320px, 80vw, 1200px);
     height: fit-content;
-
     margin-block: clamp(2rem, 5vh, 5vh);
-    gap: clamp(1rem, 2vw, 2rem);
-
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+.thumbnail-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: block;
 }
 
 .image {
     height: clamp(120px, 12vw, 150px);
     width: clamp(120px, 12vw, 150px);
-
     object-fit: cover;
     border: 2px solid var(--line);
     border-radius: 15px;
-
     transition: all 0.5s ease-in-out;
     cursor: pointer;
 }
@@ -111,24 +108,22 @@ h1 {
 /* Overlay/Dialog */
 
 .photo-highlight.open {
-    width: clamp(320px, 60vw, 700px);
+    width: clamp(320px, 60dvw, 700px);
     height: clamp(500px, 70dvh, 750px);
     position: fixed;
     margin: auto;
-
     background-color: var(--bg-panel);
     border: 1px solid var(--line);
     border-radius: clamp(20px, 3vw, 40px);
 }
 
 .dialog-content {
-    height: 100%;
-    padding-bottom: clamp(2rem, 5vh, 56px);
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+    padding-bottom: clamp(2rem, 5vh, 56px);
 }
 
 dialog::backdrop {
@@ -138,21 +133,19 @@ dialog::backdrop {
 .highlight-image {
     max-width: clamp(280px, 35vw, 450px);
     max-height: clamp(220px, 40vh, 350px);
-
     object-fit: cover;
     border: 2px solid var(--line);
     border-radius: 15px;
 }
 
 .photo-highlight-header {
-    width: 100%;
-    padding: clamp(1rem, 3vw, 30px);
-
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: clamp(1rem, 3vw, 30px);
     gap: 10px;
+    width: 100%;
     color: var(--text-main);
 }
 
@@ -162,13 +155,11 @@ dialog::backdrop {
 }
 
 .photo-highlight-footer {
-    gap: clamp(0.75rem, 2vw, 20px);
-
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    gap: clamp(0.75rem, 2vw, 20px);
     padding: 15px;
 }
 
@@ -184,7 +175,6 @@ dialog::backdrop {
 .button-left {
     width: 40px;
     height: 40px;
-
     padding: 8px;
     border-radius: 100px;
     background-color: var(--btn-default);
@@ -209,16 +199,14 @@ button {
 button:focus-visible {
     outline: 1px solid var(--focus-outline);
     outline-offset: 4px;
-
     background-color: var(--line);
 }
 
 .button-close {
+    border-radius: 100px;
+    padding: 6px;
     width: 32px;
     height: 32px;
-    padding: 6px;
-
-    border-radius: 100px;
     transition: background-color 0.15s ease-in-out;
 }
 
@@ -233,11 +221,10 @@ button:focus-visible {
 /* Footer */
 
 footer {
+    padding-inline: calc((100% - 1440px) / 2);
     width: 100%;
     min-height: 80px;
-    padding-inline: calc((100% - 1440px) / 2);
-
-    border-radius: 40% 40% 0 0 / 60px 60px 0 0;
+    border-radius: 50% 50% 0 0 / 60px 60px 0 0;
     background-color: var(--bg-panel);
     color: var(--text-main);
     display: flex;
@@ -247,9 +234,8 @@ footer {
 }
 
 .footer-logo {
-    height: 45px;
-
     padding-top: 20px;
+    height: 45px;
 }
 
 .footer-p {
