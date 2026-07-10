@@ -51,7 +51,7 @@ function highlightImage(index) {
 function updateModal(index) {
     currentIndex = index;
     dialogRef.innerHTML = getModalTemplate(index);
-    dialogRef.querySelector(".button-right")?.focus();
+    dialogRef.querySelector(".next-btn")?.focus();
 }
 
 /**
@@ -154,10 +154,8 @@ containerRef.addEventListener("keydown", (event) => {
         nextIndex = focusedIndex - columns;
     }
 
-    /**
-     *  When moving up or down, do not wrap around; simply stop at the edge,
-     *  since the last row may contain fewer images than the others.
-     */
+    // Bei Hoch/Runter nicht "umwickeln", sondern am Rand einfach stehen bleiben,
+    // da die letzte Zeile weniger Bilder haben kann als die anderen.
     if (nextIndex < 0 || nextIndex >= thumbnails.length) return;
 
     thumbnails[nextIndex].focus();
